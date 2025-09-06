@@ -1,83 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Intern Portfolio - Microtechx</title>
   <style>
     /* Base Reset */
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
-    body { background: linear-gradient(135deg, #81cbee, #032961); color: #fff; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #81cbee, #032961);
+      color: #fff;
+    }
 
     header {
-      text-align: center; padding: 1rem 1rem;
+      text-align: center;
+      padding: 1rem 1rem;
       background: #024e92;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
     }
-    header h1 { font-size: 2rem; color: #fff; animation: fadeInDown 1s ease-in-out; }
-    header p { font-size: 1.1rem; margin-top: 0.5rem; color: #3cc5f7; }
+
+    header h1 {
+      font-size: 2rem;
+      color: #fff;
+      animation: fadeInDown 1s ease-in-out;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+      color: #3cc5f7;
+    }
 
     /* Hero Section */
     .hero {
-      text-align: center; padding: 3rem 1rem;
+      text-align: center;
+      padding: 3rem 1rem;
     }
+
     .hero img {
-      width: 160px; height: 160px; border-radius: 50%;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
       border: 5px solid #1ba3e0;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.5);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5);
       animation: float 3s ease-in-out infinite;
       background: #fff;
     }
-    .hero h2 { margin-top: 1rem; font-size: 1.9rem; color: #fff; }
-    .hero h3 { font-size: 1.2rem; font-weight: normal; color: #fff; }
+
+    .hero h2 {
+      margin-top: 1rem;
+      font-size: 1.9rem;
+      color: #fff;
+    }
+
+    .hero h3 {
+      font-size: 1.2rem;
+      font-weight: normal;
+      color: #fff;
+    }
+
+    /* Tools Slider Section */
+    .tools-slider {
+      background: #011b3a;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    .tools-slider h2 {
+      color: #ffff;
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+    }
+
+    .slider {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+    }
+
+    .slide-track {
+      display: flex;
+      width: calc(180px * 16);
+      animation: scroll 30s linear infinite;
+    }
+
+    .slide-track img {
+      height: 80px;
+      width: auto;
+      margin: 0 30px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.4));
+      transition: transform 0.3s ease;
+      background: #fff;
+      padding: 5px;
+      border-radius: 10px;
+    }
+
+    .slide-track img:hover {
+      transform: scale(1.1);
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
 
     /* Card Section */
     .cards {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem; padding: 2rem;
-      max-width: 1100px; margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+      max-width: 1100px;
+      margin: auto;
     }
+
     .card {
-      background: #024e92; padding: 1.5rem; border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      background: #024e92;
+      padding: 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
     .card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 12px 28px rgba(0,0,0,0.6);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
     }
-    .card h4 { color: #fff; margin-bottom: 0.8rem; font-size: 1.3rem; }
-    .card p { color: #d6f5ff; font-size: 1rem; line-height: 1.6; }
+
+    .card h4 {
+      color: #fff;
+      margin-bottom: 0.8rem;
+      font-size: 1.3rem;
+    }
+
+    .card p {
+      color: #d6f5ff;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
 
     /* Contact */
     .contact {
-      text-align: center; padding: 2rem; background: #032961;
+      text-align: center;
+      padding: 3rem 1rem;
+      background: linear-gradient(135deg, #024e92, #032961);
+      color: #fff;
     }
-    .contact h2 { color: #fff; margin-bottom: 1rem; }
-    .contact a {
-      display: inline-block; padding: 0.7rem 1.5rem; 
-      margin: 0.5rem; border-radius: 8px; text-decoration: none;
-      background: #1ba3e0; color: #032961; font-weight: bold;
-      transition: background 0.3s ease;
+
+    .contact h2 {
+      margin-bottom: .5rem;
+      font-size: 2rem;
     }
-    .contact a:hover { background: #3cc5f7; }
+
+    .contact .subtitle {
+      color: #81cbee;
+      margin-bottom: 2rem;
+    }
+
+    .contact-form {
+      max-width: 500px;
+      margin: auto;
+      background: #011b3a;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .step {
+      display: none;
+      animation: fadeIn 0.8s ease;
+    }
+
+    .step.active {
+      display: block;
+    }
+
+    .step h3 {
+      margin-bottom: 1rem;
+    }
+
+    .step input,
+    .step textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      font-size: 1rem;
+      background: #024e92;
+      color: #fff;
+    }
+
+    .step input::placeholder,
+    .step textarea::placeholder {
+      color: #b5dbff;
+    }
+
+    .step button {
+      padding: 0.7rem 1.5rem;
+      margin: 0.3rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1rem;
+      background: #1ba3e0;
+      color: #ffff;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .step button:hover {
+      transform: scale(1.05);
+      background: #3cc5f7;
+    }
 
     footer {
-      text-align: center; padding: 1rem;
-      background: #024e92; font-size: 0.9rem; color: #81cbee;
+      text-align: center;
+      padding: 1rem;
+      background: #024e92;
+      font-size: 0.9rem;
+      color: #81cbee;
     }
 
     /* Animations */
     @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
+
     @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-12px); }
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
+
 <body>
   <header>
     <h1>Intern Portfolio - Microtechx</h1>
@@ -85,22 +284,73 @@
   </header>
 
   <section class="hero">
-    <!-- Intern will replace this with their own image -->
-    <img src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?w=740&q=80" alt="Intern Profile Picture">
+    <img src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?w=740&q=80"
+      alt="Intern Profile Picture">
     <h2>Intern Name</h2>
     <h3>Dev & DevOps Enthusiast</h3>
   </section>
 
-  <section class="cards">
+  <!-- Tools & Cloud Logos Slider -->
+  <section class="tools-slider">
+    <h2>Tech Stack & Tools</h2>
+    <div class="slider">
+      <div class="slide-track">
+        <!-- Logos -->
+        <img
+          src="data:image/png;base64,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"
+          alt="VS Code">
+        <img src="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png" alt="Docker">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Git_icon.svg" alt="Git">
+        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Microsoft_Azure_Logo.svg" alt="Azure">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Kubernetes_logo_without_workmark.svg/500px-Kubernetes_logo_without_workmark.svg.png"
+          alt="Kubernetes">
+        <img src="https://www.jenkins.io/images/logos/jenkins/jenkins.svg" alt="Jenkins">
+        <img src="https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg" alt="Terraform">
+        <img src="https://argo-cd.readthedocs.io/en/stable/assets/logo.png" alt="ArgoCD">
+        <img src="https://www.starwindsoftware.com/blog/wp-content/uploads/2022/07/bicep-matthias-blog.png" alt="Bicep">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Ansible_logo.svg" alt="Ansible">
+        <img src="https://helm.sh/img/helm.svg" alt="Helm">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Prometheus_software_logo.svg" alt="Prometheus">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Grafana_logo.svg" alt="Grafana">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Nginx_logo.svg" alt="Nginx">
+
+      </div>
+    </div>
+  </section>
+
+  <!-- <section class="cards">
     <div class="card">
       <h4>About Me</h4>
-      <p>I am an intern at Microtechx passionate about development and DevOps. Learning to build modern cloud solutions.</p>
+      <p>I am an intern at Microtechx passionate about development and DevOps. Learning to build modern cloud solutions.
+      </p>
     </div>
     <div class="card">
       <h4>My Learnings</h4>
-      <p>Hands-on with Azure App Services, CI/CD pipelines, Docker, and GitHub Actions. Exploring automation and cloud-native apps.</p>
+      <p>Hands-on with Azure App Services, CI/CD pipelines, Docker, and GitHub Actions. Exploring automation and
+        cloud-native apps.</p>
     </div>
     <div class="card">
+      <h4>My Dream</h4>
+      <p>To become a cloud & DevOps engineer and contribute to scalable, secure, and future-ready solutions.</p>
+    </div>
+  </section> -->
+
+  <!-- Staircase Cards Section -->
+  <section class="cards">
+    <div class="card step1">
+      <h4>About Me</h4>
+      <p>I am an intern at Microtechx passionate about development and DevOps. Learning to build modern cloud solutions.
+      </p>
+    </div>
+    <div class="card step2">
+      <h4>My Learnings</h4>
+      <p>Hands-on with Azure App Services, CI/CD pipelines, Docker, and GitHub Actions. Exploring automation and
+        cloud-native apps.</p>
+    </div>
+    <div class="card step3">
       <h4>My Dream</h4>
       <p>To become a cloud & DevOps engineer and contribute to scalable, secure, and future-ready solutions.</p>
     </div>
@@ -146,50 +396,9 @@
     </div>
   </section>
 
-  <style>
-    .contact { 
-      text-align: center; padding: 3rem 1rem; 
-      background: linear-gradient(135deg, #024e92, #032961);
-      color: #fff;
-    }
-    .contact h2 { color: #fff; margin-bottom: .5rem; font-size: 2rem; }
-    .contact .subtitle { color: #81cbee; margin-bottom: 2rem; }
-
-    .contact-form { 
-      max-width: 500px; margin: auto;
-      background: #011b3a; padding: 2rem; border-radius: 15px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-      position: relative; overflow: hidden;
-    }
-    .step { display: none; animation: fadeIn 0.8s ease; }
-    .step.active { display: block; }
-    .step h3 { margin-bottom: 1rem; color: #fff; }
-    .step input, .step textarea {
-      width: 100%; padding: 0.8rem; margin-bottom: 1rem;
-      border: none; border-radius: 8px;
-      outline: none; font-size: 1rem;
-      background: #024e92; color: #fff;
-    }
-    .step input::placeholder, .step textarea::placeholder {
-      color: #b5dbff;
-    }
-    .step button {
-      padding: 0.7rem 1.5rem; margin: 0.3rem;
-      border: none; border-radius: 8px; cursor: pointer;
-      font-weight: bold; font-size: 1rem;
-      background: #1ba3e0; color: #032961;
-      transition: transform 0.3s ease, background 0.3s ease;
-    }
-    .step button:hover {
-      transform: scale(1.05);
-      background: #3cc5f7;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+  <footer>
+    © 2025 Microtechx | Intern Portfolio Showcase
+  </footer>
 
   <script>
     function nextStep(current) {
@@ -201,15 +410,10 @@
       document.getElementById("step" + (current - 1)).classList.add("active");
     }
     function submitForm() {
-      // For demo purpose, just show thank you screen
       document.getElementById("step4").classList.remove("active");
       document.getElementById("thankyou").classList.add("active");
     }
   </script>
-
-
-  <footer>
-    © 2025 Microtechx | Intern Portfolio Showcase
-  </footer>
 </body>
+
 </html>
